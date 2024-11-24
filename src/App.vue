@@ -15,7 +15,6 @@ import Footer from "./components/Footer.vue";
 
 <style scoped>
 * {
-    text-decoration: none;
     background-color: rgb(14, 14, 14);
     color: #ffffff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;

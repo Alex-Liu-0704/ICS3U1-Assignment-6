@@ -1,24 +1,28 @@
 <template>
-    <div class="navdiv">
-        <div class="logo"><a href="index.html">Cine<span class="highlight">Nime</span></a></div>
-        <ul> 
-            <li><a href="index.html" class="home-button">Home</a></li>
-            <li><a href="" class="about-button">About</a></li>
-            <li><a href="" class="trending-button">Trending</a></li>
-            <li><a href="" class="movies-button">Movies</a></li>
-            <li><a href="" class="contact-button">Contact</a></li>
-            <button class="sign-up"><a href="">SIGN UP</a></button>
-            <button class="sign-in"><a href="">SIGN IN</a></button>
-        </ul>
-    </div>
+    <header>
+        <div class="navdiv">
+            <div class="logo"><a href="index.html">Cine<span class="highlight">Nime</span></a></div>
+            <ul> 
+                <li><a href="index.html" class="home-button">Home</a></li>
+                <li><a href="" class="about-button">About</a></li>
+                <li><a href="" class="trending-button">Trending</a></li>
+                <li><a href="" class="movies-button">Movies</a></li>
+                <li><a href="" class="contact-button">Contact</a></li>
+                <button class="sign-up"><a href="">SIGN UP</a></button>
+                <button class="sign-in"><a href="">SIGN IN</a></button>
+            </ul>
+        </div>
+    </header>
 </template>
 
 <style scoped>
-template {
+header {
     z-index: 4;
     position: absolute; 
     left: 0; 
     right: 0;
+    background: none;
+    height: 56px;
 }
 
 .navdiv {
@@ -44,8 +48,8 @@ template {
 .navdiv ul{
     overflow: hidden;
     list-style: none;
-    background: rgba(34, 31, 31, 0.7);
 }
+
 .navdiv li {
     float: left;
 }

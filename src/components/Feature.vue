@@ -1,31 +1,33 @@
 <template>
-<div class="featured-title">Featured Movies</div>
-    <div class="movie-container">
-        <div class="movie-item">
-            <img src="/images/movie poster 1.jpg" alt="movie1">
-            <p>Captain America: Civil War</p>
-            <p2>(2016)</p2>
+    <section>
+        <div class="featured-title">Featured Movies</div>
+        <div class="movie-container">
+            <div class="movie-item">
+                <img src="/src/assets/movie poster 1.jpg" alt="movie1">
+                <p>Captain America: Civil War</p>
+                <p2>(2016)</p2>
+            </div>
+            <div class="movie-item">
+                <img src="/src/assets/movie poster 2.jpg" alt="movie2">
+                <p>Transformers One</p>
+                <p2>(2024)</p2>
+            </div>
+            <div class="movie-item">
+                <img src="/src/assets/movie poster 3.png" alt="movie3">
+                <p>Spy x Family Code: White</p>
+                <p2>(2023)</p2>
+            </div>
+            <div class="movie-item">
+                <img src="/src/assets/movie poster 4.jpg" alt="movie4">
+                <p>Kung Fu Panda 4</p>
+                <p2>(2024)</p2>
+            </div>
         </div>
-        <div class="movie-item">
-            <img src="/images/movie poster 2.jpg" alt="movie2">
-            <p>Transformers One</p>
-            <p2>(2024)</p2>
-        </div>
-        <div class="movie-item">
-            <img src="/images/movie poster 3.png" alt="movie3">
-            <p>Spy x Family Code: White</p>
-            <p2>(2023)</p2>
-        </div>
-        <div class="movie-item">
-            <img src="/images/movie poster 4.jpg" alt="movie4">
-            <p>Kung Fu Panda 4</p>
-            <p2>(2024)</p2>
-        </div>
-    </div>
+    </section>
 </template>
 
 <style scoped>
-template {
+section {
     position: relative;
     padding: 100px 0px 150px 0px;
     text-align: center;

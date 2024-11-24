@@ -1,5 +1,5 @@
 <template>
-    <div class="hero-container">
+    <section>
         <div class="slogan">
             <h1>World-class streaming website for <span class="highlight">Movies, Anime, & so much more</span></h1>
         </div>
@@ -10,34 +10,37 @@
                 <input type="submit" name="email-submit" value="Get Started   >">
             </form>
         </div>
-    </div>
+    </section>
 </template>
 
 <style scoped>
-body { 
+section {
     position: relative;
     top: 0;
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.65),rgba(0, 0, 0, 1)), url("/images/hero.avif");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.65),rgba(0, 0, 0, 1)), url("/src/assets/hero.avif");
     background-attachment: fixed;
     background-size: cover; 
-    background-position: center;    
-}
-
-.hero-container {
+    background-position: center;  
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 2; 
+    z-index: 1; 
     padding: 60px;
     box-sizing: border-box;
 }
 
-.hero-container .slogan {
+.highlight {
+    color: rgb(143, 0, 0);
+    text-shadow: 1px 1px 1px white, -1px -1px 1px white, 1px -1px 1px white, -1px 1px 1px white;
+    /* text-decoration: underline 3.5px; */
+}
+
+.slogan {
     width: 100%;   
     max-width: 1000px;
     color: white;
@@ -46,14 +49,14 @@ body {
     text-align: center;
 }
 
-.hero-container .hero-sign-up{
+.hero-sign-up{
     text-align: center;
 }
 
 .hero-sign-up form {
     align-items: center;
     justify-content: center;
-    max-width: 650px; /* Limits the form width */
+    max-width: 682px;
     margin: 0 auto;
     padding: 10px 20px;
 }
@@ -74,6 +77,7 @@ body {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-right: 5px;
 }
 
 .hero-sign-up input[type="submit"] {
