@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <div class="featured-container">
         <div class="featured-title">Featured Movies</div>
         <div class="movie-container">
             <div class="movie-item">
@@ -23,7 +23,7 @@
                 <p2>(2024)</p2>
             </div>
         </div>
-    </section>
+    </div>
 </template>
 
 <style scoped>

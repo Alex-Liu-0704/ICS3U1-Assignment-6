@@ -1,9 +1,10 @@
-<script setup>
+<!-- <script setup>
 // make all of this in homepage view instead
 import Header from "./components/Header.vue";
 import Hero from "./components/Hero.vue";
 import Feature from "./components/Feature.vue";
 import Footer from "./components/Footer.vue";
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
@@ -22,4 +23,17 @@ import Footer from "./components/Footer.vue";
     padding: 0;
     height: 100%;
 }
+</style> -->
+
+<script setup>
+import { RouterView } from 'vue-router';
+</script>
+
+<template>
+  <Suspense>
+    <RouterView />
+  </Suspense>
+</template>
+
+<style scoped>
 </style>

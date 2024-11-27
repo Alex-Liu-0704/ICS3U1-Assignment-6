@@ -1,143 +1,103 @@
 <script setup>
-import { RouterLink, useRouter } from 'vue-router';
-import { ref } from 'vue';
+import axios from "axios";
+import { useRoute } from "vue-router";
 
-const router = useRouter();
-const password = ref('');
-
-const handleLogin = () => {
-  if (password.value === "iloveyou") {
-    router.push("/movies");
-  } else {
-    alert("Invalid Password");
-  }
-};
+const route = useRoute();
+const response = await axios.get(`https://api.themoviedb.org/3/movie/${route.params.id}?api_key=${import.meta.env.VITE_API_KEY}&append_to_response=videos`);
+console.log(response.data);
 </script>
 
 <template>
-  <div class="hero">
-    <div class="overlay">
-      <div class="navbar">
-        <h1>MyFlix</h1>
-        <RouterLink to="/register" class="button register">Register</RouterLink>
-      </div>
-      <div class="form-container">
-        <h2>Login to Your Account</h2>
-        <form @submit.prevent="handleLogin">
-          <input type="email" placeholder="Email" class="input-field" required />
-          <input v-model:="password" type="password" placeholder="Password" class="input-field" required />
-          <button type="submit" class="button login">Login</button>
-        </form>
+  <div class="movie-detail">
+    <h1 class="movie-title">{{ response.data.original_title }}</h1>
+    <p class="movie-overview">{{ response.data.overview }}</p>
+    <p class="movie-release-date">Release Date: {{ response.data.release_date }}</p>
+    <a class="movie-site" :href="response.data.homepage" target="_blank">Official Movie Site</a>
+    <img :src="`https://image.tmdb.org/t/p/w500${response.data.poster_path}`" alt="Movie Poster" class="movie-poster" />
+
+    <h2 class="trailers-title">Trailers</h2>
+    <div class="trailers-container">
+      <div v-for="trailer in response.data.videos.results" :key="trailer.id" class="trailer-tile">
+        <a :href="`https://www.youtube.com/watch?v=${trailer.key}`" target="_blank">
+          <img :src="`https://img.youtube.com/vi/${trailer.key}/hqdefault.jpg`" alt="Trailer"
+            class="trailer-thumbnail" />
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.hero {
-  background-image: url('https://source.unsplash.com/random/1920x1080/?movie');
-  /* Replace with your desired background */
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
+.movie-detail {
   padding: 20px;
-  /* Added padding for better spacing */
-}
-
-.navbar {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-.navbar h1 {
-  font-size: 2rem;
-}
-
-.navbar .register {
-  background-color: #e50914;
   color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  background-color: #141414; /* Dark background for the detail view */
 }
 
-.navbar .register:hover {
-  background-color: #f40612;
+.movie-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #e50914; /* Netflix red */
 }
 
-.form-container {
-  text-align: center;
-  margin-top: 50px;
-  /* Adjusts spacing from the top */
+.movie-overview {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
-.form-container h2 {
-  font-size: 2rem;
+.movie-release-date {
+  font-size: 1rem;
   margin-bottom: 20px;
 }
 
-.input-field {
-  padding: 15px;
-  /* Increased padding for better touch targets */
-  width: 300px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  /* Added a border */
-  margin-bottom: 15px;
-  transition: border-color 0.3s;
-}
-
-.input-field:focus {
-  border-color: #e50914;
-  /* Change border color on focus */
-  outline: none;
-  /* Remove default outline */
-}
-
-.login {
-  background-color: #e50914;
+.movie-site {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: #e50914; /* Netflix red */
   color: white;
-  padding: 10px 20px;
-  border: none;
+  text-decoration: none;
   border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  /* Added transform for hover effect */
 }
 
-.login:hover {
-  background-color: #f40612;
-  transform: scale(1.05);
-  /* Slightly scale up on hover */
+.movie-site:hover {
+  background-color: #f01212; /* Darker red on hover */
 }
 
-@media (max-width: 600px) {
-  .input-field {
-    width: 90%;
-    /* Make input fields responsive */
-  }
+.movie-poster {
+  width: 25%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
 
-  .navbar h1 {
-    font-size: 1.5rem;
-    /* Reduce font size on smaller screens */
-  }
+.trailers-title {
+  font-size: 2rem;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.trailers-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; /* Space between trailer tiles */
+}
+
+.trailer-tile {
+  background-color: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  width: 200px; /* Fixed width for trailer tiles */
+}
+
+.trailer-tile:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+}
+
+.trailer-thumbnail {
+  width: 100%; /* Full width of the tile */
+  height: auto; /* Maintain aspect ratio */
 }
 </style>

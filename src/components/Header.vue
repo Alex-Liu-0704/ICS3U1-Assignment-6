@@ -1,22 +1,26 @@
+<script setup>
+import { RouterLink } from 'vue-router';
+</script>
+
 <template>
-    <header>
+    <div class="header-container">
         <div class="navdiv">
             <div class="logo"><a href="index.html">Cine<span class="highlight">Nime</span></a></div>
             <ul> 
-                <li><a href="index.html" class="home-button">Home</a></li>
+                <li><a href="" class="home-button">Home</a></li>
                 <li><a href="" class="about-button">About</a></li>
                 <li><a href="" class="trending-button">Trending</a></li>
                 <li><a href="" class="movies-button">Movies</a></li>
                 <li><a href="" class="contact-button">Contact</a></li>
-                <button class="sign-up"><a href="">SIGN UP</a></button>
-                <button class="sign-in"><a href="">SIGN IN</a></button>
+                <RouterLink to="/register" class="button sign-up">SIGN UP</RouterLink>
+                <RouterLink to="/login" class="button sign-in">SIGN IN</RouterLink>
             </ul>
         </div>
-    </header>
+    </div>
 </template>
 
 <style scoped>
-header {
+.header-container {
     z-index: 4;
     position: absolute; 
     left: 0; 
@@ -66,7 +70,7 @@ header {
     background-color: rgba(17, 14, 14, 0.7);
 }
 
-.navdiv button {
+.navdiv .button {
     background-color: rgb(143, 0, 0);
     padding: 8px;
     border-radius: 30px;
@@ -77,20 +81,23 @@ header {
     border-color:white;
     border-width: 1px;
     transition: transform 0.3s ease;
+    display: inline-flex; 
+    color: white;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
 }
 
-.navdiv button a {
-    color: white;
-    /* font-weight: bold; */
-    font-size: 15px;
+.navdiv .button:hover {
+    background-color: rgb(97, 0, 0);
+    transform: scale(1.05);
 }
 
 .navdiv .sign-in {
     margin-right: 20px;
 }
 
-.navdiv button:hover {
-    background-color: rgb(97, 0, 0);
-    transform: scale(1.05); 
+.navdiv .sign-up {
+    margin-right: 5px;
 }
 </style>

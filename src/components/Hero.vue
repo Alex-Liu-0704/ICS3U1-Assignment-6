@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <div class="hero-container">
         <div class="slogan">
             <h1>World-class streaming website for <span class="highlight">Movies, Anime, & so much more</span></h1>
         </div>
@@ -10,11 +10,11 @@
                 <input type="submit" name="email-submit" value="Get Started   >">
             </form>
         </div>
-    </section>
+    </div>
 </template>
 
 <style scoped>
-section {
+.hero-container {
     position: relative;
     top: 0;
     width: 100%;

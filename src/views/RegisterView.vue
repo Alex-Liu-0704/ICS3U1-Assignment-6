@@ -1,32 +1,19 @@
-<script setup>
-import { RouterLink, useRouter } from 'vue-router';
-import { ref } from 'vue';
-
-const router = useRouter();
-const password = ref('');
-
-const handleLogin = () => {
-  if (password.value === "iloveyou") {
-    router.push("/movies");
-  } else {
-    alert("Invalid Password");
-  }
-};
-</script>
+<script setup></script>
 
 <template>
   <div class="hero">
     <div class="overlay">
       <div class="navbar">
         <h1>MyFlix</h1>
-        <RouterLink to="/register" class="button register">Register</RouterLink>
+        <a href="index.html" class="button login">Login</a>
       </div>
       <div class="form-container">
-        <h2>Login to Your Account</h2>
-        <form @submit.prevent="handleLogin">
-          <input type="email" placeholder="Email" class="input-field" required />
-          <input v-model:="password" type="password" placeholder="Password" class="input-field" required />
-          <button type="submit" class="button login">Login</button>
+        <h2>Create an Account</h2>
+        <form>
+          <input type="text" placeholder="Name" class="input-field" required>
+          <input type="email" placeholder="Email" class="input-field" required>
+          <input type="password" placeholder="Password" class="input-field" required>
+          <button type="submit" class="button register">Register</button>
         </form>
       </div>
     </div>
@@ -35,8 +22,7 @@ const handleLogin = () => {
 
 <style scoped>
 .hero {
-  background-image: url('https://source.unsplash.com/random/1920x1080/?movie');
-  /* Replace with your desired background */
+  background-image: url('https://source.unsplash.com/random/1920x1080/?movie'); /* Replace with your desired background */
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -54,8 +40,7 @@ const handleLogin = () => {
   align-items: center;
   justify-content: center;
   color: white;
-  padding: 20px;
-  /* Added padding for better spacing */
+  padding: 20px; /* Added padding for better spacing */
 }
 
 .navbar {
@@ -69,7 +54,7 @@ const handleLogin = () => {
   font-size: 2rem;
 }
 
-.navbar .register {
+.navbar .login {
   background-color: #e50914;
   color: white;
   padding: 10px 20px;
@@ -78,14 +63,13 @@ const handleLogin = () => {
   transition: background-color 0.3s;
 }
 
-.navbar .register:hover {
+.navbar .login:hover {
   background-color: #f40612;
 }
 
 .form-container {
   text-align: center;
-  margin-top: 50px;
-  /* Adjusts spacing from the top */
+  margin-top: 50px; /* Adjusts spacing from the top */
 }
 
 .form-container h2 {
@@ -94,24 +78,20 @@ const handleLogin = () => {
 }
 
 .input-field {
-  padding: 15px;
-  /* Increased padding for better touch targets */
+  padding: 15px; /* Increased padding for better touch targets */
   width: 300px;
   border-radius: 5px;
-  border: 1px solid #ccc;
-  /* Added a border */
+  border: 1px solid #ccc; /* Added a border */
   margin-bottom: 15px;
   transition: border-color 0.3s;
 }
 
 .input-field:focus {
-  border-color: #e50914;
-  /* Change border color on focus */
-  outline: none;
-  /* Remove default outline */
+  border-color: #e50914; /* Change border color on focus */
+  outline: none; /* Remove default outline */
 }
 
-.login {
+.register {
   background-color: #e50914;
   color: white;
   padding: 10px 20px;
@@ -119,25 +99,21 @@ const handleLogin = () => {
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  /* Added transform for hover effect */
+  transition: background-color 0.3s, transform 0.2s; /* Added transform for hover effect */
 }
 
-.login:hover {
+.register:hover {
   background-color: #f40612;
-  transform: scale(1.05);
-  /* Slightly scale up on hover */
+  transform: scale(1.05); /* Slightly scale up on hover */
 }
 
 @media (max-width: 600px) {
   .input-field {
-    width: 90%;
-    /* Make input fields responsive */
+    width: 90%; /* Make input fields responsive */
   }
 
   .navbar h1 {
-    font-size: 1.5rem;
-    /* Reduce font size on smaller screens */
+    font-size: 1.5rem; /* Reduce font size on smaller screens */
   }
 }
 </style>

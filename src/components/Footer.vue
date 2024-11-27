@@ -1,5 +1,5 @@
 <template>
-    <footer>
+    <div class="footer-container">
         <div class="footer-top">
             <div class="footer-contact">
                 <ul> 
@@ -12,22 +12,23 @@
             <div class="footer-links">
                 <ul> 
                     <li><h3>Links</h3></li>
-                    <li><a href="index.html" class="home-button">Home</a></li>
-                    <li><a href="about.html" class="about-button">About</a></li> <!-- Fixed href -->
-                    <li><a href="trending.html" class="trending-button">Trending</a></li> <!-- Fixed href -->
-                    <li><a href="movies.html" class="movies-button">Movies</a></li> <!-- Fixed href -->
-                    <li><a href="contact.html" class="contact-button">Contact</a></li> <!-- Fixed href -->
+                    <li><a href="" class="home-button">Home</a></li>
+                    <li><a href="" class="about-button">About</a></li> <!-- Fixed href -->
+                    <li><a href="" class="trending-button">Trending</a></li> <!-- Fixed href -->
+                    <li><a href="" class="movies-button">Movies</a></li> <!-- Fixed href -->
+                    <li><a href="" class="contact-button">Contact</a></li> <!-- Fixed href -->
                 </ul> <!-- Closing ul tag added -->
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 CineNime. All rights reserved</p>
         </div>
-    </footer>
+    </div>
 </template>
 
 <style scoped>
-footer {
+.footer-container {
+    background-color: rgb(14, 14, 14);
     padding-top: 50px;
     height: 350px;
     display: flex;
