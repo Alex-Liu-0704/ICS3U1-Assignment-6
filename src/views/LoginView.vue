@@ -102,6 +102,7 @@ const handleLogin = () => {
   /* Added a border */
   margin-bottom: 15px;
   transition: border-color 0.3s;
+  color: black;
 }
 
 .input-field:focus {

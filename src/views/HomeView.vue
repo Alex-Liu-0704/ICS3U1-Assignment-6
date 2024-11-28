@@ -7,19 +7,19 @@ import Footer from "../components/Footer.vue";
 </script>
 
 <template>
-    <Header />
-    <Hero />
-    <Feature />
-    <Footer />
+  <Header />
+  <Hero />
+  <Feature />
+  <Footer />
 </template>
 
 <style scoped>
 * {
-    background-color: rgb(14, 14, 14);
-    color: #ffffff;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100%;
+  background-color: rgb(14, 14, 14);
+  color: #ffffff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 </style>
