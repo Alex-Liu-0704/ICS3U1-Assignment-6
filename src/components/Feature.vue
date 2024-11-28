@@ -1,26 +1,42 @@
+<script setup>
+import axios from "axios";
+import { useRouter } from "vue-router";
+import { onMounted, ref } from "vue";
+
+const router = useRouter();
+const response = ref(null)
+
+// copied from google to shuffle and array and get different movies each refresh //
+function shuffle(array) {
+  let currentIndex = array.length;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+}
+
+  onMounted(async () => {
+    response.value = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}`);
+    shuffle(response.value.data.results)
+})
+</script>
+
 <template>
-  <div class="featured-container">
+  <div class=featured-container v-if="response">
     <div class="featured-title">Featured Movies</div>
-    <div class="movie-container">
-      <div class="movie-item">
-        <img src="/src/assets/movie poster 1.jpg" alt="movie1">
-        <p>Captain America: Civil War</p>
-        <p2>(2016)</p2>
-      </div>
-      <div class="movie-item">
-        <img src="/src/assets/movie poster 2.jpg" alt="movie2">
-        <p>Transformers One</p>
-        <p2>(2024)</p2>
-      </div>
-      <div class="movie-item">
-        <img src="/src/assets/movie poster 3.png" alt="movie3">
-        <p>Spy x Family Code: White</p>
-        <p2>(2023)</p2>
-      </div>
-      <div class="movie-item">
-        <img src="/src/assets/movie poster 4.jpg" alt="movie4">
-        <p>Kung Fu Panda 4</p>
-        <p2>(2024)</p2>
+    <div class="movie-list">
+      <div v-for="movie in response.data.results.slice(0, 4)" :key="movie.id" class="movie-card"
+        @click="getMovieDetails(movie.id)">
+        <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Movie Poster" class="movie-poster" />
+        <p class="movie-title">{{ movie.title }}</p>
       </div>
     </div>
   </div>
@@ -32,6 +48,7 @@
   padding: 100px 0px 150px 0px;
   text-align: center;
   color: white;
+  background-color: rgb(14, 14, 14);
 }
 
 .featured-title {
@@ -40,7 +57,7 @@
   font-weight: bold;
 }
 
-.movie-container {
+.movie-list {
   display: flex;
   align-items: stretch;
   justify-content: space-around;
@@ -49,12 +66,9 @@
   padding: 0 5px;
 }
 
-.movie-item {
+img {
   text-align: center;
   color: white;
-}
-
-.movie-item img {
   width: 300px;
   height: 450px;
   border-radius: 10px;
@@ -62,20 +76,15 @@
   transition: transform 0.3s ease;
 }
 
-.movie-item img:hover {
+img:hover {
   transform: scale(1.05);
   opacity: 0.85;
 }
 
-.movie-item p {
+.movie-title {
   padding: 20px;
   padding-bottom: 0px;
   font-size: 18px;
 }
 
-.movie-item p2 {
-  padding: 10px;
-  padding-top: 0px;
-  font-size: 18px;
-}
 </style>
