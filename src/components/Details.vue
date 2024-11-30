@@ -1,20 +1,31 @@
 <script setup>
-import Header from "../components/Header.vue"
-import Footer from "../components/Footer.vue";
 import axios from "axios";
-import { useRoute } from "vue-router";
+import { ref, onMounted } from "vue";
 
-const route = useRoute();
-const response = await axios.get(`https://api.themoviedb.org/3/movie/${route.params.id}?api_key=${import.meta.env.VITE_API_KEY}&append_to_response=videos`);
+const props = defineProps({ movieId: { type: Number, required: true } });
+const response = ref(null);
+const backgroundImage = ref("")
+
+onMounted(async () => {
+  response.value = await axios.get(`https://api.themoviedb.org/3/movie/${props.movieId}?api_key=${import.meta.env.VITE_API_KEY}&append_to_response=videos`);
+  backgroundImage.value = `https://image.tmdb.org/t/p/w1280${response.value.data.backdrop_path}`; //change to original pixel size only if it works on school desktop
+});
 </script>
 
 <template>
-  <div class="movie-detail">
-    <img :src="`https://image.tmdb.org/t/p/w500${response.data.poster_path}`" alt="Movie Poster" class="movie-poster" />
-    <h1 class="movie-title">{{ response.data.original_title }}</h1>
-    <p class="movie-overview">{{ response.data.overview }}</p>
-    <p class="movie-release-date">Release Date: {{ response.data.release_date }}</p>
-    <a class="movie-site" :href="response.data.homepage" target="_blank">Official Movie Site</a>
+  <div v-if="response" class="details-container">
+    <div class="movie-background" :style="{ backgroundImage: `url(${backgroundImage})` }">
+      <div class="movie-info">
+        <img :src="`https://image.tmdb.org/t/p/w500${response.data.poster_path}`" alt="Movie Poster" class="movie-poster" />
+        <div class="movie-text">
+          <h1 class="movie-title">{{ response.data.original_title }}</h1>
+          <p class="movie-overview">{{ response.data.overview }}</p>
+          <p class="movie-release-date">Release Date: {{ response.data.release_date }}</p>
+          <!-- <p class=""> {{ response.data. }}></p> -->
+          <a class="movie-site" :href="response.data.homepage" target="_blank">Official Movie Site</a>
+        </div>
+      </div>
+    </div>
 
     <h2 class="trailers-title">Trailers</h2>
     <div class="trailers-container">
@@ -29,47 +40,38 @@ const response = await axios.get(`https://api.themoviedb.org/3/movie/${route.par
 </template>
 
 <style scoped>
-.movie-detail {
-  padding: 20px;
-  color: white;
-  background-color: #141414; /* Dark background for the detail view */
-}
-
-.movie-title {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.details-container {
+  background-color: #141414;
   color: white;
 }
 
-.movie-overview {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+.movie-background {
+  position: relative;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
 
-.movie-release-date {
-  font-size: 1rem;
-  margin-bottom: 20px;
+.movie-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 0;
 }
 
-.movie-site {
-  display: inline-block;
-  margin-bottom: 20px;
-  padding: 10px 15px;
-  background-color: rgb(143, 0, 0);
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
+.movie-info {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.movie-site:hover {
-  background-color: rgb(97, 0, 0);
-}
 
-.movie-poster {
-  width: 25%;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
 
 .trailers-title {
   font-size: 2rem;

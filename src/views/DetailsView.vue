@@ -2,17 +2,15 @@
 import Header from "../components/Header.vue"
 import Footer from "../components/Footer.vue";
 import Details from "../components/Details.vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
 </script>
 
 <template>
   <Header />
-  <Details />
+  <Details :movieId="Number(route.params.id)" />
   <Footer />
 </template>
 
-<style scoped>
-/* .header-container {
-  position: relative;
-  background-color: rgb(14, 14, 14);
-} */
-</style>
+<style scoped></style>
