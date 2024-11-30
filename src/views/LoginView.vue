@@ -85,7 +85,6 @@ h2 {
   border: none;
   border-radius: 5px;
   font-size: 18px;
-  cursor: pointer;
   margin-bottom: 20px;
 }
 
@@ -93,7 +92,7 @@ h2 {
   background-color: rgb(143, 0, 0);
   color: white;
   margin-top: 15px;
-  transition: transform 0.15s ease
+  transition: transform 0.2s ease
 }
 
 .login:hover {
