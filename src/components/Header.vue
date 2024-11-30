@@ -1,11 +1,20 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+function navigateToHome() {
+  router.push('/')
+};
 </script>
 
 <template>
   <div class="header-container">
     <div class="navdiv">
-      <div class="logo"><a href="index.html">Cine<span class="highlight">Nime</span></a></div>
+      <div class="logo">
+        <a @click="navigateToHome">Cine<span class="highlight">Nime</span></a>
+      </div>
       <ul>
         <li><a href="" class="home-button">Home</a></li>
         <li><a href="" class="about-button">About</a></li>

@@ -85,6 +85,7 @@ img:hover {
   padding: 20px;
   padding-bottom: 0px;
   font-size: 18px;
+  max-width: 300px;
 }
 
 </style>

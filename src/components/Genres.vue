@@ -7,6 +7,7 @@ const props = defineProps(["genres"]);
 const router = useRouter();
 const selectedGenre = ref(28);
 const response = ref(null);
+const isDropdownOpen = ref(false);
 
 async function getMovieByGenre() {
   response.value = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&with_genres=${selectedGenre.value}`);
@@ -23,7 +24,9 @@ onMounted(async () => {
 
 <template>
   <div class="movie-gallery">
-    <select v-model="selectedGenre" @change="getMovieByGenre()">
+    <h1 class="movie-section-title">Explore Movies by Genre</h1>
+    <select v-model="selectedGenre" @change="getMovieByGenre" @focus="isDropdownOpen=true"
+      @blur="isDropdownOpen=false">
       <option v-for="genre of genres" :value="genre.id">{{ genre.genreName }}</option>
     </select>
     <div v-if="response" class="movie-list">
@@ -36,6 +39,8 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+.movie-section-title {}
+
 select {
   background-color: #333;
   color: white;
@@ -66,7 +71,8 @@ select:focus {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  margin-top: 20px; /* Add space below the select */
+  margin-top: 20px;
+  /* Add space below the select */
 }
 
 .movie-card {

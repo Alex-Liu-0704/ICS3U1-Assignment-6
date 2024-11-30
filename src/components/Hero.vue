@@ -85,7 +85,6 @@
   background-color: rgb(143, 0, 0);
   padding: 15px;
   font-size: 16px;
-  font-weight:bold;
   border: 1px solid #ccc;
   border-radius: 5px;
   transition: transform 0.3s ease;
