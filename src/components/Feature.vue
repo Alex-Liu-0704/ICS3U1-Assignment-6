@@ -23,10 +23,14 @@ function shuffle(array) {
   }
 }
 
-  onMounted(async () => {
-    response.value = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}`);
-    shuffle(response.value.data.results)
+onMounted(async () => {
+  response.value = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}`);
+  shuffle(response.value.data.results)
 })
+
+function getMovieDetails(id) {
+  router.push(`/movies/${id}`)
+}
 </script>
 
 <template>
@@ -48,7 +52,7 @@ function shuffle(array) {
   padding: 100px 0px 150px 0px;
   text-align: center;
   color: white;
-  background-color: rgb(14, 14, 14);
+  background-color: #141414;
 }
 
 .featured-title {
@@ -77,8 +81,9 @@ img {
 }
 
 img:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   opacity: 0.85;
+  border: 2px solid white
 }
 
 .movie-title {
@@ -87,5 +92,4 @@ img:hover {
   font-size: 18px;
   max-width: 300px;
 }
-
 </style>

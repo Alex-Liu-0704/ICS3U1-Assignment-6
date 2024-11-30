@@ -88,9 +88,7 @@ function navigateToHome() {
   /* hard code this value during media queries */
   margin-left: 10px;
   width: 100px;
-  border-style: solid;
-  border-color: white;
-  border-width: 1px;
+  border: 1px solid rgb(143, 0, 0);
   transition: transform 0.3s ease;
   display: inline-flex;
   color: white;

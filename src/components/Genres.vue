@@ -7,7 +7,6 @@ const props = defineProps(["genres"]);
 const router = useRouter();
 const selectedGenre = ref(28);
 const response = ref(null);
-const isDropdownOpen = ref(false);
 
 async function getMovieByGenre() {
   response.value = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&with_genres=${selectedGenre.value}`);
@@ -25,8 +24,7 @@ onMounted(async () => {
 <template>
   <div class="movie-gallery">
     <h1 class="movie-section-title">Explore Movies by Genre</h1>
-    <select v-model="selectedGenre" @change="getMovieByGenre" @focus="isDropdownOpen=true"
-      @blur="isDropdownOpen=false">
+    <select v-model="selectedGenre" @change="getMovieByGenre">
       <option v-for="genre of genres" :value="genre.id">{{ genre.genreName }}</option>
     </select>
     <div v-if="response" class="movie-list">
@@ -39,7 +37,12 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.movie-section-title {}
+.movie-section-title {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
 
 select {
   background-color: #333;
@@ -72,19 +75,20 @@ select:focus {
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
-  /* Add space below the select */
 }
 
 .movie-card {
   background-color: #222;
   border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
   width: 200px;
 }
 
 .movie-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
+  opacity: 85%;
+  border: 2px solid white
 }
 
 .movie-poster {
@@ -96,6 +100,6 @@ select:focus {
   padding: 10px;
   text-align: center;
   font-size: 1.1rem;
-  color: #e50914;
+  color: white;
 }
 </style>

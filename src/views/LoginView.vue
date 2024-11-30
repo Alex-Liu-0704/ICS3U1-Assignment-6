@@ -90,9 +90,10 @@ h2 {
 
 .login {
   background-color: rgb(143, 0, 0);
+  border: 2px solid rgb(143, 0, 0);
   color: white;
   margin-top: 15px;
-  transition: transform 0.2s ease
+  transition: transform 0.2s ease;
 }
 
 .login:hover {

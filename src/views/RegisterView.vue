@@ -69,6 +69,7 @@ h2 {
 
 .register {
   background-color: rgb(143, 0, 0);
+  border: 2px solid rgb(143, 0, 0);
   color: white;
   width: 100%;
   padding: 12px;

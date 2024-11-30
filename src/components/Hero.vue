@@ -1,3 +1,9 @@
+<script setup>
+import { RouterLink, useRouter } from 'vue-router';
+
+const router = useRouter();
+</script>
+  
   <template>
   <div class="hero-container">
     <div class="slogan">
@@ -7,7 +13,7 @@
       <form>
         <label for="email">Interested in accessing our diverse database? Become a member now.</label><br>
         <input type="email" name="email" placeholder="Email address" required>
-        <input type="submit" name="email-submit" value="Get Started   >">
+        <RouterLink to="/register" class="button register">Get Started   ></RouterLink>
       </form>
     </div>
   </div>
@@ -75,23 +81,24 @@
   max-width: 400px;
   padding: 15px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 2px solid #444;
   border-radius: 5px;
   margin-right: 5px;
 }
 
-.hero-sign-up input[type="submit"] {
+.button {
+  display: inline-block;
   color:#ffffff;
   background-color: rgb(143, 0, 0);
   padding: 15px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 2px solid rgb(143, 0, 0);
   border-radius: 5px;
   transition: transform 0.3s ease;
 }
 
-.hero-sign-up input[type="submit"]:hover {
+.button:hover {
   background-color: rgb(97, 0, 0);
-  transform: scale(1.05); 
+  transform: scale(1.03);
 }
 </style>

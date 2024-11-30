@@ -39,7 +39,7 @@
 <style scoped>
 .footer-container {
   color: white;
-  background-color: rgb(14, 14, 14);
+  background-color: #141414;
   padding-top: 50px;
   height: 350px;
   display: flex;

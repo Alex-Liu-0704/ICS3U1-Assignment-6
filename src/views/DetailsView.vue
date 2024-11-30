@@ -11,4 +11,8 @@ import Details from "../components/Details.vue";
 </template>
 
 <style scoped>
+/* .header-container {
+  position: relative;
+  background-color: rgb(14, 14, 14);
+} */
 </style>
