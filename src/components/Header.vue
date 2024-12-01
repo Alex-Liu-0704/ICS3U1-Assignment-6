@@ -3,24 +3,27 @@ import { RouterLink } from 'vue-router';
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-
-function navigateToHome() {
-  router.push('/')
-};
 </script>
 
 <template>
   <div class="header-container">
     <div class="navdiv">
       <div class="logo">
-        <a @click="navigateToHome">Cine<span class="highlight">Nime</span></a>
+        <RouterLink to="/">Cine<span class="highlight">Nime</span></RouterLink>
       </div>
       <ul>
-        <li><a href="" class="home-button">Home</a></li>
-        <li><a href="" class="about-button">About</a></li>
-        <li><a href="" class="trending-button">Trending</a></li>
-        <li><a href="" class="movies-button">Movies</a></li>
-        <li><a href="" class="contact-button">Contact</a></li>
+        <li>
+          <RouterLink to="/" class="about-button">About</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/movies" class="trending-button">Trending</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/movies" class="movies-button">Movies</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/" class="contact-button">Contact</RouterLink>
+        </li>
         <RouterLink to="/register" class="button sign-up">SIGN UP</RouterLink>
         <RouterLink to="/login" class="button sign-in">SIGN IN</RouterLink>
       </ul>

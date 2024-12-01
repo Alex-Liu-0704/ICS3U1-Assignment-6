@@ -1,3 +1,7 @@
+<script setup>
+import { RouterLink } from 'vue-router';
+</script>
+
 <template>
   <div class="footer-container">
     <div class="footer-top">
@@ -15,18 +19,28 @@
           <li>
             <p>Address: 2621 Midland Ave, Scarborough</p>
           </li>
-        </ul> 
+        </ul>
       </div>
       <div class="footer-links">
         <ul>
           <li>
             <h3>Links</h3>
           </li>
-          <li><a href="" class="home-button">Home</a></li>
-          <li><a href="" class="about-button">About</a></li> 
-          <li><a href="" class="trending-button">Trending</a></li> 
-          <li><a href="" class="movies-button">Movies</a></li> 
-          <li><a href="" class="contact-button">Contact</a></li> 
+          <li>
+            <RouterLink to="/" class="home-button">Home</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/" class="about-button">About</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/movies" class="trending-button">Trending</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/movies" class="movies-button">Movies</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/" class="contact-button">Contact</RouterLink>
+          </li>
         </ul>
       </div>
     </div>

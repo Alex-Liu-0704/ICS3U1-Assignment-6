@@ -124,7 +124,7 @@ onMounted(async () => {
 .trailers-title {
   font-size: 2rem;
   margin-top: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -133,7 +133,7 @@ onMounted(async () => {
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-  /* Space between trailer tiles */
+  padding: 0 50px;
 }
 
 .trailer-tile {
@@ -142,18 +142,15 @@ onMounted(async () => {
   overflow: hidden;
   transition: transform 0.2s;
   width: 200px;
-  /* Fixed width for trailer tiles */
 }
 
 .trailer-tile:hover {
   transform: scale(1.05);
-  /* Scale effect on hover */
+  opacity: 85%;
 }
 
 .trailer-thumbnail {
   width: 100%;
-  /* Full width of the tile */
   height: auto;
-  /* Maintain aspect ratio */
 }
 </style>
