@@ -1,7 +1,7 @@
 <script setup>
 import axios from "axios";
 import { useRouter } from "vue-router";
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
 const router = useRouter();
 const response = ref(null);
@@ -33,7 +33,7 @@ function getMovieDetails(id) {
     <div class="featured-title">Featured Movies</div>
     <div v-if="response" class="movie-list">
       <div v-for="number in numbers" :key="response.data.results[number].id" class="movie-card"
-        @click="getMovieDetails(movie.id)">
+        @click="getMovieDetails(response.data.results[number].id)">
         <img :src="`https://image.tmdb.org/t/p/w500${response.data.results[number].poster_path}`" alt="Movie Poster"
           class="movie-poster" />
         <p class="movie-title">{{ response.data.results[number].title }}</p>

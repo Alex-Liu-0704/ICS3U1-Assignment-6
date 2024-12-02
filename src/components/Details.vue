@@ -22,6 +22,7 @@ onMounted(async () => {
         </div>
         <div class="right-info">
           <h1 class="movie-title">{{ response.data.original_title }}</h1>
+          <p class="movie-tagline"> "{{ response.data.tagline }}"</p>
           <p class="movie-release-date">Release Date: {{ response.data.release_date }}</p>
           <p class="movie-origin-country">Origin Country: {{ response.data.origin_country[0] }}</p>
           <p class="movie-runtime"> {{ response.data.runtime }} minutes</p>
@@ -87,16 +88,22 @@ onMounted(async () => {
   padding-left: 50px;
 }
 
-.movie-title{
-  padding-bottom: 20px;
+.movie-title {
+  padding-bottom: 10px;
 }
 
-.right-info p {
+.movie-release-date,
+.movie-origin-country,
+.movie-runtime,
+.movie-average {
+  font-size: 14px;
   padding: 10px 0;
 }
 
-.movie-release-date, .movie-origin-country, .movie-runtime, .movie-average {
-  font-size: 14px;
+.movie-tagline {
+  font-size: 17px;
+  padding-top: 0px;
+  padding-bottom: 20px;
 }
 
 .movie-site {
@@ -114,6 +121,7 @@ onMounted(async () => {
 
 .movie-overview {
   font-size: 17px;
+  padding: 10px 0;
 }
 
 .movie-site:hover {
