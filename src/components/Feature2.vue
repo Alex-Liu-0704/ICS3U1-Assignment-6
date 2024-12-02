@@ -1,42 +1,46 @@
 <script setup>
 import axios from "axios";
 import { useRouter } from "vue-router";
-import { ref, onMounted } from 'vue';
+import { onMounted, ref } from "vue";
 
 const router = useRouter();
-const response = ref(null);
-const numbers = ref([]);
+const response = ref(null)
 
-numbers.value = (() => {
-  const set = new Set();
+// copied from google to shuffle and array and get different movies each refresh //
+function shuffle(array) {
+  let currentIndex = array.length;
 
-  while (true) {
-    set.add(Math.floor(Math.random() * 19));
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
 
-    if (set.size === 4) {
-      return set;
-    }
+    // Pick a remaining element...
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
   }
-})();
+}
 
 onMounted(async () => {
   response.value = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}`);
-});
+  shuffle(response.value.data.results)
+})
 
 function getMovieDetails(id) {
   router.push(`/movies/${id}`)
-};
+}
 </script>
 
 <template>
-  <div class="featured-container">
+  <div class=featured-container v-if="response">
     <div class="featured-title">Featured Movies</div>
-    <div v-if="response" class="movie-list">
-      <div v-for="number in numbers" :key="response.data.results[number].id" class="movie-card"
+    <div class="movie-list">
+      <div v-for="movie in response.data.results.slice(0, 4)" :key="movie.id" class="movie-card"
         @click="getMovieDetails(movie.id)">
-        <img :src="`https://image.tmdb.org/t/p/w500${response.data.results[number].poster_path}`" alt="Movie Poster"
-          class="movie-poster" />
-        <p class="movie-title">{{ response.data.results[number].title }}</p>
+        <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Movie Poster" class="movie-poster" />
+        <p class="movie-title">{{ movie.title }}</p>
       </div>
     </div>
   </div>
