@@ -5,24 +5,24 @@ import Footer from "../components/Footer.vue";
 
 const genresList = [
   {
-    genreName: 'Action',
-    id: 28
+    id: 28,
+    genreName: 'Action'
   },
   {
-    genreName: 'Animation',
-    id: 16
+    id: 16,
+    genreName: 'Animation'
   },
   {
-    genreName: 'Fantasy',
-    id: 14
+    id: 14,
+    genreName: 'Fantasy'
   },
   {
-    genreName: 'History',
-    id: 36
+    id: 36,
+    genreName: 'History'
   },
   {
-    genreName: 'War',
-    id: 10752
+    id: 10752,
+    genreName: 'War'
   }
 ];
 </script>

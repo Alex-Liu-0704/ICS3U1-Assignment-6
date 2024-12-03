@@ -24,7 +24,7 @@ onMounted(async () => {
 });
 
 function getMovieDetails(id) {
-  router.push(`/movies/${id}`)
+  router.push(`/movies/${id}`);
 };
 </script>
 

@@ -1,8 +1,5 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import { useRouter } from "vue-router";
-
-const router = useRouter();
 </script>
 
 <template>
@@ -58,7 +55,6 @@ const router = useRouter();
 .highlight {
   color: rgb(143, 0, 0);
   text-shadow: 1px 1px 1px white, -1px -1px 1px white, 1px -1px 1px white, -1px 1px 1px white;
-  /* text-decoration: underline 3.5px; */
 }
 
 .navdiv ul {
@@ -73,9 +69,7 @@ const router = useRouter();
 .navdiv li a {
   color: white;
   font-size: 15px;
-  /* font-weight: bold; */
   padding: 19px 25px;
-  /* hard code this value during media queries */
   display: block;
 }
 
@@ -88,7 +82,6 @@ const router = useRouter();
   padding: 8px;
   border-radius: 30px;
   margin: 10.5px 0px;
-  /* hard code this value during media queries */
   margin-left: 10px;
   width: 100px;
   border: 1px solid rgb(143, 0, 0);

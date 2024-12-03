@@ -1,7 +1,5 @@
 <script setup>
-import { RouterLink, useRouter } from 'vue-router';
-
-const router = useRouter();
+import { RouterLink } from 'vue-router';
 </script>
   
   <template>
@@ -43,7 +41,6 @@ const router = useRouter();
 .highlight {
   color: rgb(143, 0, 0);
   text-shadow: 1px 1px 1px white, -1px -1px 1px white, 1px -1px 1px white, -1px 1px 1px white;
-  /* text-decoration: underline 3.5px; */
 }
 
 .slogan {

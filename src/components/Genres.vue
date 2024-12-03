@@ -11,14 +11,14 @@ const response = ref(null);
 async function getMovieByGenre() {
   response.value = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&with_genres=${selectedGenre.value}`);
 }
-
+;
 function getMovieDetails(id) {
-  router.push(`/movies/${id}`)
-}
+  router.push(`/movies/${id}`);
+};
 
 onMounted(async () => {
   response.value = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&with_genres=${selectedGenre.value}`);
-})
+});
 </script>
 
 <template>
@@ -82,7 +82,7 @@ select:focus {
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.2s ease;
-  width: 200px;
+  width: 220px;
 }
 
 .movie-card:hover {
