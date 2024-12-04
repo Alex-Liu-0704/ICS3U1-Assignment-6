@@ -59,7 +59,6 @@ select {
 select:focus {
   border-color: #e50914;
   outline: none;
-  margin-bottom: 150px;
   transition: margin 0.15s ease;
 }
 
