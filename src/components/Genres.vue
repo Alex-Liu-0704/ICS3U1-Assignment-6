@@ -10,8 +10,8 @@ const response = ref(null);
 
 async function getMovieByGenre() {
   response.value = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&with_genres=${selectedGenre.value}`);
-}
-;
+};
+
 function getMovieDetails(id) {
   router.push(`/movies/${id}`);
 };
