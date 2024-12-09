@@ -1,6 +1,29 @@
 <script setup>
 import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
+import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+import { useStore } from "../store"
+
+const store = useStore();
+const router = useRouter();
+const firstName = ref('')
+const lastName = ref('')
+const email = ref('');
+const password = ref('');
+const reEnteredPassword = ref('');
+
+const handleRegister = () => {
+  if ( firstName.value && lastName.value && email.value && password.value && password.value === reEnteredPassword.value ) {
+    store.firstName = firstName.value;
+    store.lastName = lastName.value;
+    store.email = email.value;
+    store.password = password.value;
+    router.push("/movies/all");
+  } else {
+    alert("Error");  // change in the futre to a different error mesage depending on which input is missing
+  }
+}; 
 </script>
 
 <template>
@@ -8,12 +31,12 @@ import Footer from '../components/Footer.vue';
   <div class="register-container">
     <div class="form-container">
       <h2>Create an Account</h2>
-      <form>
-        <input type="text" placeholder="First Name" class="input-field" required>
-        <input type="text" placeholder="Last Name" class="input-field" required>
-        <input type="email" placeholder="Email" class="input-field" required>
-        <input type="password" placeholder="Password" class="input-field" required>
-        <input type="password" placeholder="Re-enter Password" class="input-field" required>
+      <form @submit.prevent="handleRegister">
+        <input v-model:="firstName" type="text" placeholder="First Name" class="input-field" >
+        <input v-model:="lastName" type="text" placeholder="Last Name" class="input-field" >
+        <input v-model:="email" type="email" placeholder="Email" class="input-field" >
+        <input v-model:="password" type="password" placeholder="Password" class="input-field" >
+        <input v-model:="reEnterPassword" type="password" placeholder="Re-enter Password" class="input-field" >
         <button type="submit" class="button register">Register</button>
       </form>
     </div>

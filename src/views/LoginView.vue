@@ -3,13 +3,17 @@ import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
 import { RouterLink, useRouter } from 'vue-router';
 import { ref } from 'vue';
+import { useStore } from "../store"
 
+const store = useStore();
 const router = useRouter();
+const email = ref('');
 const password = ref('');
 
 const handleLogin = () => {
   if (password.value === "password") {
-    router.push("/movies");
+    store.email = email.value;
+    router.push("/movies/all");
   } else {
     alert("Invalid Password");
   }
