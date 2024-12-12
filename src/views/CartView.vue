@@ -1,10 +1,13 @@
 <script setup>
+import Header from '../components/Header.vue';
+import Footer from '../components/Footer.vue';
 import { useStore } from '../store';
 
 const store = useStore();
 </script>
 
 <template>
+  <Header />
   <div class="cart">
     <h1>Shopping Cart</h1>
     <div class="item" v-for="([key, value]) in store.cart">
@@ -13,9 +16,15 @@ const store = useStore();
       <button @click="store.cart.delete(key)">Remove</button>
     </div>
   </div>
+  <Footer />
 </template>
 
 <style scoped>
+.header-container {
+  position: relative;
+  background-color: rgb(14, 14, 14);
+}
+
 h1 {
   color: #e50914;
   text-align: center;

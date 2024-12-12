@@ -14,16 +14,30 @@ const password = ref('');
 const reEnteredPassword = ref('');
 
 const handleRegister = () => {
-  if ( firstName.value && lastName.value && email.value && password.value && password.value === reEnteredPassword.value ) {
+  const errors = [];
+
+  if (!firstName.value) {
+    errors.push("First name is required");
+  } if (!lastName.value) {
+    errors.push("Last name is required");
+  } if (!email.value) {
+    errors.push("Email is required");
+  } if (!password.value) {
+    errors.push("Password is required");
+  } else if (!reEnteredPassword.value) {
+    errors.push("Please re-enter password");
+  } else if (password.value !== reEnteredPassword.value) {
+    errors.push("Passwords do not match");
+  } if (errors.length > 0) {
+    alert(errors); // problem: doesnt put the different values on seperate lines
+  } else {
     store.firstName = firstName.value;
     store.lastName = lastName.value;
     store.email = email.value;
     store.password = password.value;
-    router.push("/movies/all");
-  } else {
-    alert("Error");  // change in the futre to a different error mesage depending on which input is missing
+    router.push("/movies");
   }
-}; 
+};
 </script>
 
 <template>
@@ -32,11 +46,11 @@ const handleRegister = () => {
     <div class="form-container">
       <h2>Create an Account</h2>
       <form @submit.prevent="handleRegister">
-        <input v-model:="firstName" type="text" placeholder="First Name" class="input-field" >
-        <input v-model:="lastName" type="text" placeholder="Last Name" class="input-field" >
-        <input v-model:="email" type="email" placeholder="Email" class="input-field" >
-        <input v-model:="password" type="password" placeholder="Password" class="input-field" >
-        <input v-model:="reEnterPassword" type="password" placeholder="Re-enter Password" class="input-field" >
+        <input v-model:="firstName" type="text" placeholder="First Name" class="input-field">
+        <input v-model:="lastName" type="text" placeholder="Last Name" class="input-field">
+        <input v-model:="email" type="email" placeholder="Email" class="input-field">
+        <input v-model:="password" type="password" placeholder="Password" class="input-field">
+        <input v-model:="reEnteredPassword" type="password" placeholder="Re-enter Password" class="input-field">
         <button type="submit" class="button register">Register</button>
       </form>
     </div>

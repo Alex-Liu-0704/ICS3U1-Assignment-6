@@ -13,7 +13,7 @@ const password = ref('');
 const handleLogin = () => {
   if (password.value === "password") {
     store.email = email.value;
-    router.push("/movies/all");
+    router.push("/movies");
   } else {
     alert("Invalid Password");
   }

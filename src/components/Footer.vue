@@ -29,18 +29,18 @@ import { RouterLink } from 'vue-router';
           <li>
             <RouterLink to="/" class="home-button">Home</RouterLink>
           </li>
-          <li>
+          <!-- <li>
             <RouterLink to="/" class="about-button">About</RouterLink>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <RouterLink to="/movies" class="trending-button">Trending</RouterLink>
-          </li>
+          </li> -->
           <li>
             <RouterLink to="/movies" class="movies-button">Movies</RouterLink>
           </li>
-          <li>
+          <!-- <li>
             <RouterLink to="/" class="contact-button">Contact</RouterLink>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>

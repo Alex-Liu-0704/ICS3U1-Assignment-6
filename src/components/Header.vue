@@ -1,28 +1,42 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import { useStore } from '../store';
+
+const store = useStore();
 </script>
 
 <template>
   <div class="header-container">
     <div class="navdiv">
-      <div class="logo">
+      <div v-if="!store.email" class="logo">
         <RouterLink to="/">Cine<span class="highlight">Nime</span></RouterLink>
+      </div>
+      <div v-else class="logo">
+        <RouterLink to="/">Cine<span class="highlight">Nime</span></RouterLink><span class="welcome-message">Welcome {{
+          store.firstName }}</span>
       </div>
       <ul>
         <li>
-          <RouterLink to="/" class="about-button">About</RouterLink>
+          <RouterLink to="/" class="home-button">Home</RouterLink>
         </li>
-        <li>
+        <!-- <li>
           <RouterLink to="/movies" class="trending-button">Trending</RouterLink>
-        </li>
+        </li> -->
         <li>
           <RouterLink to="/movies" class="movies-button">Movies</RouterLink>
         </li>
-        <li>
+        <!-- <li>
           <RouterLink to="/" class="contact-button">Contact</RouterLink>
+        </li> -->
+        <li v-if="!store.email">
+          <RouterLink to="/register" class="button sign-up">SIGN UP</RouterLink>
+          <RouterLink to="/login" class="button sign-in">SIGN IN</RouterLink>
         </li>
-        <RouterLink to="/register" class="button sign-up">SIGN UP</RouterLink>
-        <RouterLink to="/login" class="button sign-in">SIGN IN</RouterLink>
+        <li v-else>
+          <RouterLink to="/cart" class="button cart">CART</RouterLink>
+          <RouterLink to="/settings" class="button settings">SETTINGS</RouterLink>
+          <RouterLink to="/" class="button log-out">LOG OUT</RouterLink>
+        </li>
       </ul>
     </div>
   </div>
@@ -104,5 +118,14 @@ import { RouterLink } from 'vue-router';
 
 .navdiv .sign-up {
   margin-right: 5px;
+}
+
+.log-out {
+  margin-right: 5px;
+  background-color: none;
+}
+
+.log-out:hover {
+  background-color: none;
 }
 </style>

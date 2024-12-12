@@ -2,7 +2,9 @@
 import axios from "axios";
 import { ref, onMounted } from 'vue';
 import { useRouter } from "vue-router";
+import { useStore } from "../store";
 
+const store = useStore();
 const props = defineProps(["genres"]);
 const router = useRouter();
 const selectedGenre = ref(28);
@@ -28,9 +30,12 @@ onMounted(async () => {
       <option v-for="genre of genres" :value="genre.id">{{ genre.genreName }}</option>
     </select>
     <div v-if="response" class="movie-list">
-      <div v-for="movie in response.data.results" :key="movie.id" class="movie-card" @click="getMovieDetails(movie.id)">
-        <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Movie Poster" class="movie-poster" />
+      <div v-for="movie in response.data.results" :key="movie.id" class="movie-card">
+        <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Movie Poster" class="movie-poster"
+          @click="getMovieDetails(movie.id)" />
         <p class="movie-title">{{ movie.title }}</p>
+        <button @click="store.cart.set(movie.id, { title: movie.title, url: movie.poster_path })">
+          {{ store.cart.has(movie.id) ? "Added" : "Buy" }} </button>
       </div>
     </div>
   </div>
