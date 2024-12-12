@@ -1,8 +1,15 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { useStore } from '../store';
+import { useRouter } from 'vue-router';
 
 const store = useStore();
+const router = useRouter();
+
+function logOut() {
+  router.push("/");
+  store.$reset();
+};
 </script>
 
 <template>
@@ -35,7 +42,7 @@ const store = useStore();
         <li v-else>
           <RouterLink to="/cart" class="button cart">CART</RouterLink>
           <RouterLink to="/settings" class="button settings">SETTINGS</RouterLink>
-          <RouterLink to="/" class="button log-out">LOG OUT</RouterLink>
+          <button @click="logOut()" class="button log-out">LOG OUT </button>
         </li>
       </ul>
     </div>

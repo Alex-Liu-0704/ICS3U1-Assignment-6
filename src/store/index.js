@@ -8,5 +8,13 @@ export const useStore = defineStore('store', () => {
   const password = ref('');
   const cart = ref(new Map());
 
-  return { firstName, lastName, email, password, cart }
+  function $reset() {
+    firstName.value = '';
+    lastName.value = '';
+    email.value = '';
+    password.value = '';
+    cart.value = new Map();
+  };
+
+  return { firstName, lastName, email, password, cart, $reset }
 })
