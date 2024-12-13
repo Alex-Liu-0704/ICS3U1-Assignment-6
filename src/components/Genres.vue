@@ -35,7 +35,7 @@ onMounted(async () => {
           @click="getMovieDetails(movie.id)" /> 
           <!-- inefficient way of accessing detials -->
         <p class="movie-title" @click="getMovieDetails(movie.id)">{{ movie.title }}</p>
-        <button @click="store.cart.set(movie.id, { title: movie.title, url: movie.poster_path })">
+        <button @click="store.cart.set(movie.id, { title: movie.original_title, url: movie.poster_path })">
           {{ store.cart.has(movie.id) ? "Added" : "Buy" }} </button>
       </div>
     </div>
