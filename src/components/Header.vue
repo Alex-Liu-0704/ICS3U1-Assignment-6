@@ -100,12 +100,12 @@ function logOut() {
 
 .navdiv .button {
   background-color: rgb(143, 0, 0);
-  padding: 8px;
+  padding: 6.5px;
   border-radius: 30px;
   margin: 10.5px 0px;
   margin-left: 10px;
   width: 100px;
-  border: 1px solid rgb(143, 0, 0);
+  border: 2px solid rgb(143, 0, 0);
   transition: transform 0.3s ease;
   display: inline-flex;
   color: white;
@@ -127,12 +127,12 @@ function logOut() {
   margin-right: 5px;
 }
 
-.log-out {
-  margin-right: 5px;
-  background-color: none;
+.navdiv .log-out {
+  margin-right: 20px;
+  background-color: transparent;
 }
 
-.log-out:hover {
-  background-color: none;
+.navdiv .log-out:hover {
+  background-color: transparent;
 }
 </style>

@@ -25,7 +25,7 @@ const handleLogin = () => {
   <div class="login-container">
     <div class="form-container">
       <h2>Login to Your Account</h2>
-      <form @submit.prevent="handleLogin">
+      <form @submit.prevent="handleLogin()">
         <input type="email" placeholder="Email" class="input-field" required />
         <input v-model:="password" type="password" placeholder="Password" class="input-field" required />
         <button type="submit" class="button login">Login</button>

@@ -3,12 +3,12 @@ import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
-import { useStore } from "../store"
+import { useStore } from "../store";
 
 const store = useStore();
 const router = useRouter();
-const firstName = ref('')
-const lastName = ref('')
+const firstName = ref('');
+const lastName = ref('');
 const email = ref('');
 const password = ref('');
 const reEnteredPassword = ref('');
@@ -19,17 +19,17 @@ const handleRegister = () => {
   if (!firstName.value) {
     errors.push("First name is required");
   } if (!lastName.value) {
-    errors.push("Last name is required");
+    errors.push("\nLast name is required");
   } if (!email.value) {
-    errors.push("Email is required");
+    errors.push("\nEmail is required");
   } if (!password.value) {
-    errors.push("Password is required");
+    errors.push("\nPassword is required");
   } else if (!reEnteredPassword.value) {
-    errors.push("Please re-enter password");
+    errors.push("\nPlease re-enter password");
   } else if (password.value !== reEnteredPassword.value) {
-    errors.push("Passwords do not match");
+    errors.push("\nPasswords do not match");
   } if (errors.length > 0) {
-    alert(errors); // problem: doesnt put the different values on seperate lines
+    alert(errors); 
   } else {
     store.firstName = firstName.value;
     store.lastName = lastName.value;
@@ -45,7 +45,7 @@ const handleRegister = () => {
   <div class="register-container">
     <div class="form-container">
       <h2>Create an Account</h2>
-      <form @submit.prevent="handleRegister">
+      <form @submit.prevent="handleRegister()">
         <input v-model:="firstName" type="text" placeholder="First Name" class="input-field">
         <input v-model:="lastName" type="text" placeholder="Last Name" class="input-field">
         <input v-model:="email" type="email" placeholder="Email" class="input-field">
